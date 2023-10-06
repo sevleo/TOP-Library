@@ -22,3 +22,14 @@ body {
 .book {
     margin-bottom: 15px;
 }
+
+::backdrop {
+    background-image: linear-gradient(
+      45deg,
+      magenta,
+      rebeccapurple,
+      dodgerblue,
+      green
+    );
+    opacity: 0.75;
+  }

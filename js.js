@@ -1,34 +1,24 @@
-const myLibrary = [
-    {
-        title: "The Hobbit",
-        author: "J.R.R. Tolkien",
-        has_read: false,
-    },
-    {
-        title: "Harry Potter and the Philosopher's Stone",
-        author: "J.K. Rowling",
-        has_read: true,
-    },
-    {
-        title: "Meditations",
-        author: "Marcus Aurelius",
-        has_read: false,
-    },
-];
+// To store book instances
+const myLibrary = [];
 
+// Test data
+const book1 = new Book("The Hobbit", "J.R.R. Tolkien", false);
+const book2 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", true);
+const book3 = new Book("Meditations", "Marcus Aurelius", true);
+myLibrary.push(book1);
+myLibrary.push(book2);
+myLibrary.push(book3);
+
+// Book constructor
 function Book(title, author, has_read) {
     this.title = title;
     this.author = author;
     this.has_read = has_read;
-    this.show_title = () => {
-        const read_status = this.has_read ? "has been read" : "has not read yet";
-        return (`${this.title} by ${this.author}, ${this.num_of_pages} pages, ${read_status}.`);
-    }
+    this.displayed = false;
 }
 
-
-function addBookToLibrary() {
-    const book = new Book('Test Title', 'Test Author', false)
+// Called on submit button in dialog
+function addBookToLibrary(book) {
     myLibrary.push(book);
     loadBooks();
 }
@@ -66,3 +56,39 @@ function loadBooks() {
 
 
 loadBooks();
+
+
+const dialog = document.querySelector("dialog");
+const openDialogButton = document.querySelector('.add-book > button.dialog');
+const closeDialogButton = document.querySelector('dialog.add-book > form > button.close');
+const form = document.querySelector("dialog > form");
+const submitDialogButton = document.querySelector('dialog.add-book > form > button.submit');
+
+
+openDialogButton.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+
+closeDialogButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    form.reset();
+    dialog.close();
+});
+
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    addBookToLibrary(createBookObject());
+    form.reset();
+    dialog.close();
+});
+
+// Collect book properties from DOM and create object
+function createBookObject() {
+    const bookTitle = document.querySelector("dialog.add-book > form input#title");
+    const bookAuthor = document.querySelector("dialog.add-book > form input#author");
+    const bookRead = document.querySelector("dialog.add-book > form input#read");
+    const book = new Book(bookTitle.value, bookAuthor.value, bookRead.checked);
+    return book;
+}
