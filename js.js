@@ -25,6 +25,7 @@ function loadBooks() {
             // Update DOM
             const bookItem = document.createElement("div");
             bookItem.classList.add('book');
+            bookItem.setAttribute('data-index', i);
 
             const bookItemTitle = document.createElement("p");
             bookItemTitle.textContent = `Title: ${book.title}`;
@@ -38,6 +39,24 @@ function loadBooks() {
             bookItemHasRead.textContent = `Has been read: ${book.has_read}`;
             bookItem.append(bookItemHasRead);
 
+            const bookItemReadToggleLabel = document.createElement("label");
+            bookItemReadToggleLabel.classList.add('switch');
+            bookItem.append(bookItemReadToggleLabel);
+
+            const bookItemReadToggleInput = document.createElement("input");
+            bookItemReadToggleInput.setAttribute('type', 'checkbox');
+            bookItemReadToggleInput.checked = book.has_read;
+            bookItemReadToggleInput.addEventListener("click", () => {
+                book.has_read = !book.has_read;
+                bookItemHasRead.textContent  = `Has been read: ${book.has_read}`;
+
+            });
+            bookItemReadToggleLabel.append(bookItemReadToggleInput);
+
+            const bookItemReadToggleSpan = document.createElement("span");
+            bookItemReadToggleSpan.classList.add("slider", "round");
+            bookItemReadToggleLabel.append(bookItemReadToggleSpan);
+        
             bookList.append(bookItem);
         }
     }
