@@ -1,5 +1,6 @@
 // Global variables
 const myLibrary = [];
+let bookCount = 0;
 
 // Execution
 createTestData();
@@ -7,16 +8,18 @@ loadBooks();
 addModalDialogEventListeners();
 
 // Book constructor
-function Book(title, author, has_read, displayed) {
+function Book(title, author, has_read, displayed, id) {
     this.title = title;
     this.author = author;
     this.has_read = has_read;
     this.displayed = displayed;
+    this.id = id;
 }
 
 // Display updated books' library
 function loadBooks() {
     const bookList = document.querySelector('.book-list');
+    const dialogRemoveBook = document.querySelector("dialog.confirm-delete");
     for (let i = 0; i < myLibrary.length; i++) {
         const book = myLibrary[i];
         if (book.displayed === false) {
@@ -25,7 +28,7 @@ function loadBooks() {
             // Update DOM
             const bookItem = document.createElement("div");
             bookItem.classList.add('book');
-            bookItem.setAttribute('data-index', i);
+            bookItem.setAttribute('data-index', book.id);
 
             const bookItemTitle = document.createElement("p");
             bookItemTitle.textContent = `Title: ${book.title}`;
@@ -56,39 +59,71 @@ function loadBooks() {
             const bookItemReadToggleSpan = document.createElement("span");
             bookItemReadToggleSpan.classList.add("slider", "round");
             bookItemReadToggleLabel.append(bookItemReadToggleSpan);
+
+            const bookItemRemoveButton = document.createElement("button");
+            bookItemRemoveButton.textContent = "Remove book";
+            bookItemRemoveButton.addEventListener("click", (event) => {
+                openRemoveDialog(event.target.parentNode.dataset.index);
+            })
+            bookItem.append(bookItemRemoveButton);
         
             bookList.append(bookItem);
+
+            function openRemoveDialog(bookIndex) {
+                console.log(bookIndex);
+                console.log(dialogRemoveBook);
+                console.dir(dialogRemoveBook);
+                dialogRemoveBook.dataset.bookId = bookIndex;
+                dialogRemoveBook.showModal();
+            }
         }
     }
 }
 
 // Define event listeners around modal dialog window
 function addModalDialogEventListeners() {
-    const dialog = document.querySelector("dialog");
-    const openDialogButton = document.querySelector('.add-book > button.dialog');
-    const closeDialogButton = document.querySelector('dialog.add-book > form > button.close');
-    const form = document.querySelector("dialog > form");
+
+    // Add book dialog
+    const dialogAddBook = document.querySelector("dialog.add-book");
+    const dialogAddBookOpenButton = document.querySelector('.add-book > button.dialog');
+    const dialogAddBookCloseButton = document.querySelector('dialog.add-book > form > button.close');
+    const dialogAddBookForm = document.querySelector("dialog > form");
     
-    openDialogButton.addEventListener("click", () => {
-        dialog.showModal();
+    dialogAddBookOpenButton.addEventListener("click", () => {
+        dialogAddBook.showModal();
     });
     
-    closeDialogButton.addEventListener("click", (event) => {
+    dialogAddBookCloseButton.addEventListener("click", (event) => {
         event.preventDefault();
-        form.reset();
-        dialog.close();
+        dialogAddBookForm.reset();
+        dialogAddBook.close();
     });
     
-    form.addEventListener("submit", (event) => {
+    dialogAddBookForm.addEventListener("submit", (event) => {
         event.preventDefault();
-        addBookToLibrary(createBookObject());
-        form.reset();
-        dialog.close();
+        addBook(createBookObject());
+        dialogAddBookForm.reset();
+        dialogAddBook.close();
     });
+
+    // Remove book dialog
+    const dialogRemoveBook = document.querySelector("dialog.confirm-delete");
+    const dialogRemoveBookConfirmButton = document.querySelector("dialog.confirm-delete > form > button.confirm");
+    const dialogRemoveBookCloseButton = document.querySelector("dialog.confirm-delete > form > button.close");
+
+    dialogRemoveBookConfirmButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        removeBook(dialogRemoveBookConfirmButton.form.parentNode.dataset.bookId);
+    })
+
+    dialogRemoveBookCloseButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        dialogRemoveBook.close();
+    })
 }
 
-// Add new book to library
-function addBookToLibrary(book) {
+// Add new book
+function addBook(book) {
     myLibrary.push(book);
     loadBooks();
 }
@@ -98,15 +133,23 @@ function createBookObject() {
     const bookTitle = document.querySelector("dialog.add-book > form input#title");
     const bookAuthor = document.querySelector("dialog.add-book > form input#author");
     const bookRead = document.querySelector("dialog.add-book > form input#read");
-    const book = new Book(bookTitle.value, bookAuthor.value, bookRead.checked, false);
+    const book = new Book(bookTitle.value, bookAuthor.value, bookRead.checked, false, countBooks());
     return book;
+}
+
+function removeBook(bookId) {
+    console.log(bookId);
+}
+
+function countBooks() {
+    return bookCount = bookCount + 1;
 }
 
 // Test stuff
 function createTestData() {
-    const book1 = new Book("The Hobbit", "J.R.R. Tolkien", false, false);
-    const book2 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", true, false);
-    const book3 = new Book("Meditations", "Marcus Aurelius", true, false);
+    const book1 = new Book("The Hobbit", "J.R.R. Tolkien", false, false, countBooks());
+    const book2 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", true, false, countBooks());
+    const book3 = new Book("Meditations", "Marcus Aurelius", true, false, countBooks());
     myLibrary.push(book1);
     myLibrary.push(book2);
     myLibrary.push(book3);
