@@ -70,11 +70,9 @@ function loadBooks() {
             bookList.append(bookItem);
 
             function openRemoveDialog(bookIndex) {
-                console.log(bookIndex);
-                console.log(dialogRemoveBook);
-                console.dir(dialogRemoveBook);
                 dialogRemoveBook.dataset.bookId = bookIndex;
                 dialogRemoveBook.showModal();
+                console.log(myLibrary);
             }
         }
     }
@@ -114,6 +112,7 @@ function addModalDialogEventListeners() {
     dialogRemoveBookConfirmButton.addEventListener("click", (event) => {
         event.preventDefault();
         removeBook(dialogRemoveBookConfirmButton.form.parentNode.dataset.bookId);
+        dialogRemoveBook.close();
     })
 
     dialogRemoveBookCloseButton.addEventListener("click", (event) => {
@@ -138,7 +137,11 @@ function createBookObject() {
 }
 
 function removeBook(bookId) {
-    console.log(bookId);
+    const indexToDelete = myLibrary.findIndex(book => parseInt(book.id) === parseInt(bookId));
+    if (indexToDelete !== -1) {
+        myLibrary.splice(indexToDelete, 1);
+        console.log(myLibrary);
+    }
 }
 
 function countBooks() {
