@@ -150,6 +150,7 @@ function removeBookNode(bookId) {
     bookToRemove.remove();
 }
 
+// Test
 // Assign book id
 function countBooks() {
     return bookCount = bookCount + 1;
