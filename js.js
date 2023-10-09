@@ -72,7 +72,6 @@ function loadBooks() {
             function openRemoveDialog(bookIndex) {
                 dialogRemoveBook.dataset.bookId = bookIndex;
                 dialogRemoveBook.showModal();
-                console.log(myLibrary);
             }
         }
     }
@@ -112,6 +111,7 @@ function addModalDialogEventListeners() {
     dialogRemoveBookConfirmButton.addEventListener("click", (event) => {
         event.preventDefault();
         removeBook(dialogRemoveBookConfirmButton.form.parentNode.dataset.bookId);
+        removeBookNode(dialogRemoveBookConfirmButton.form.parentNode.dataset.bookId);
         dialogRemoveBook.close();
     })
 
@@ -136,14 +136,21 @@ function createBookObject() {
     return book;
 }
 
+// Remove book from library
 function removeBook(bookId) {
     const indexToDelete = myLibrary.findIndex(book => parseInt(book.id) === parseInt(bookId));
     if (indexToDelete !== -1) {
         myLibrary.splice(indexToDelete, 1);
-        console.log(myLibrary);
     }
 }
 
+// Remove book node
+function removeBookNode(bookId) {
+    const bookToRemove = document.querySelector(`.book[data-index="${bookId}"]`)
+    bookToRemove.remove();
+}
+
+// Assign book id
 function countBooks() {
     return bookCount = bookCount + 1;
 }
