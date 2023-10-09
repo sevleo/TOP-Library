@@ -82,9 +82,11 @@ function addModalDialogEventListeners() {
 
     // Add book dialog
     const dialogAddBook = document.querySelector("dialog.add-book");
-    const dialogAddBookOpenButton = document.querySelector('.add-book > button.dialog');
     const dialogAddBookCloseButton = document.querySelector('dialog.add-book > form > button.close');
     const dialogAddBookForm = document.querySelector("dialog > form");
+
+    // Add book button
+    const dialogAddBookOpenButton = document.querySelector('.book.add');
     
     dialogAddBookOpenButton.addEventListener("click", () => {
         dialogAddBook.showModal();
@@ -162,23 +164,23 @@ function createTestData() {
     const book3 = new Book("Meditations", "Marcus Aurelius", true, false, countBooks());
     const book4 = new Book("The Hobbit", "J.R.R. Tolkien", false, false, countBooks());
     const book5 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", true, false, countBooks());
-    const book6 = new Book("Meditations", "Marcus Aurelius", true, false, countBooks());
-    const book7 = new Book("The Hobbit", "J.R.R. Tolkien", false, false, countBooks());
-    const book8 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", true, false, countBooks());
-    const book9 = new Book("Meditations", "Marcus Aurelius", true, false, countBooks());
-    const book10 = new Book("The Hobbit", "J.R.R. Tolkien", false, false, countBooks());
-    const book11 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", true, false, countBooks());
-    const book12 = new Book("Meditations", "Marcus Aurelius", true, false, countBooks());
+    // const book6 = new Book("Meditations", "Marcus Aurelius", true, false, countBooks());
+    // const book7 = new Book("The Hobbit", "J.R.R. Tolkien", false, false, countBooks());
+    // const book8 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", true, false, countBooks());
+    // const book9 = new Book("Meditations", "Marcus Aurelius", true, false, countBooks());
+    // const book10 = new Book("The Hobbit", "J.R.R. Tolkien", false, false, countBooks());
+    // const book11 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", true, false, countBooks());
+    // const book12 = new Book("Meditations", "Marcus Aurelius", true, false, countBooks());
     myLibrary.push(book1);
     myLibrary.push(book2);
     myLibrary.push(book3);
     myLibrary.push(book4);
     myLibrary.push(book5);
-    myLibrary.push(book6);
-    myLibrary.push(book7);
-    myLibrary.push(book8);
-    myLibrary.push(book9);
-    myLibrary.push(book10);
-    myLibrary.push(book11);
-    myLibrary.push(book12);
+    // myLibrary.push(book6);
+    // myLibrary.push(book7);
+    // myLibrary.push(book8);
+    // myLibrary.push(book9);
+    // myLibrary.push(book10);
+    // myLibrary.push(book11);
+    // myLibrary.push(book12);
 }
