@@ -150,7 +150,6 @@ function removeBookNode(bookId) {
     bookToRemove.remove();
 }
 
-// Test
 // Assign book id
 function countBooks() {
     return bookCount = bookCount + 1;
@@ -161,7 +160,25 @@ function createTestData() {
     const book1 = new Book("The Hobbit", "J.R.R. Tolkien", false, false, countBooks());
     const book2 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", true, false, countBooks());
     const book3 = new Book("Meditations", "Marcus Aurelius", true, false, countBooks());
+    const book4 = new Book("The Hobbit", "J.R.R. Tolkien", false, false, countBooks());
+    const book5 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", true, false, countBooks());
+    const book6 = new Book("Meditations", "Marcus Aurelius", true, false, countBooks());
+    const book7 = new Book("The Hobbit", "J.R.R. Tolkien", false, false, countBooks());
+    const book8 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", true, false, countBooks());
+    const book9 = new Book("Meditations", "Marcus Aurelius", true, false, countBooks());
+    const book10 = new Book("The Hobbit", "J.R.R. Tolkien", false, false, countBooks());
+    const book11 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", true, false, countBooks());
+    const book12 = new Book("Meditations", "Marcus Aurelius", true, false, countBooks());
     myLibrary.push(book1);
     myLibrary.push(book2);
     myLibrary.push(book3);
+    myLibrary.push(book4);
+    myLibrary.push(book5);
+    myLibrary.push(book6);
+    myLibrary.push(book7);
+    myLibrary.push(book8);
+    myLibrary.push(book9);
+    myLibrary.push(book10);
+    myLibrary.push(book11);
+    myLibrary.push(book12);
 }

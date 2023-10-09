@@ -1,16 +1,71 @@
+/* Fonts */
+
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Light';
+    src: url('fonts/Roboto/Roboto-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Thin';
+    src: url('fonts/Roboto/Roboto-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 /* General styles */
 
+:root {
+    --line-height: calc(1.1rem + 0.5vw);
+    --color-1: #F3EADA;
+    --color-2: #4A8179;
+    --color-3: #00C9B2;
+    --color-4: #FFA17A;
+}
+
 * {
-    margin: 0rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto-Light', sans-serif, serif;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 body {
-    height: 100vh;
+    /* height: 100vh; */
     width: 100vw;
-    background-color: black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: var(--color-1);
 }
 
 ::backdrop {
@@ -24,19 +79,47 @@ body {
     opacity: 0.75;
   }
 
-  
+
 /* Layout */
 
 .container {
-    background-color: white;
-    height: calc(100% - 7px);
-    width: calc(100% - 7px);
+    /* height: 100%; */
+    width: 100vw;
+    min-width: 200px;
     display: grid;
+    /* grid-template-rows: minmax(50px, fit-content) auto minmax(50px, fit-content); */
+    grid-template-rows: 1fr auto 1fr;
+}
 
+.container > .header {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.container > .main {
+    grid-area: 2 / 1 / 3 / 2;
+    margin: 30px
+}
+
+.container > .footer {
+    grid-area: 3 / 1 / 4 / 2;
+}
+
+
+/* Main div */
+
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: max-content;
+    gap: 25px;
 }
 
 .book {
-    margin-bottom: 15px;
+    border: var(--color-4) 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    height: 200px;
+    background-color: var(--color-4);
 }
 
 
