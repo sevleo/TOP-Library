@@ -30,22 +30,23 @@
         <form>
             <p>Add a book</p>
             <div>
-                <label for="title">Title</label>
-                <input type="text" id="title" required>
+                <label for="title">Title *</label>
+                <input type="text" id="title" required placeholder="Meditations">
             </div>
             <div>
-                <label for="author">Author</label>
-                <input type="text" id="author" required>
+                <label for="author">Author *</label>
+                <input type="text" id="author" required placeholder="Marcus Aurelius">
             </div>
             <div>
                 <label for="read">Read</label>
                 <input type="checkbox" id="read">
             </div>
-            <button class="close">Close</button>
-            <button autofocus type="submit" class="submit">Confirm</button>
+            <div>
+                <button autofocus type="submit" class="submit">Confirm</button>
+                <button class="close">Close</button>
+            </div>
         </form>
     </dialog>
-
     <dialog class="confirm-delete" data-book-id="">
         <form>
             <p>Delete the book?</p>

@@ -52,10 +52,12 @@ function loadBooks() {
 
             const bookItemReadToggleInput = document.createElement("input");
             bookItemReadToggleInput.setAttribute('type', 'checkbox');
+            bookItemReadToggleInput.setAttribute('name', 'read-toggle');
+            bookItemReadToggleInput.setId
             bookItemReadToggleInput.checked = book.has_read;
             bookItemReadToggleInput.addEventListener("click", () => {
                 book.has_read = !book.has_read;
-                bookItemHasRead.textContent  = `Has been read: ${book.has_read}`;
+                // bookItemHasRead.textContent  = `Has been read: ${book.has_read}`;
 
             });
             bookItemReadToggleLabel.append(bookItemReadToggleInput);
@@ -91,7 +93,7 @@ function addModalDialogEventListeners() {
 
     // Add book dialog
     const dialogAddBook = document.querySelector("dialog.add-book");
-    const dialogAddBookCloseButton = document.querySelector('dialog.add-book > form > button.close');
+    const dialogAddBookCloseButton = document.querySelector('dialog.add-book > form > div > button.close');
     const dialogAddBookForm = document.querySelector("dialog > form");
 
     // Add book button
