@@ -1,3 +1,13 @@
+/* Material-icons */
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+
 /* Fonts */
 
 @font-face {
@@ -63,7 +73,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to right bottom, #442700, #583608, #6d460d, #825712, #986817, #a57925, #b28a34, #bf9b42, #c7ae5c, #d0c177, #dad392, #e5e5ae);
+    /* background-image: linear-gradient(to right bottom, #442700, #583608, #6d460d, #825712, #986817, #a57925, #b28a34, #bf9b42, #c7ae5c, #d0c177, #dad392, #e5e5ae); */
+    background-color: #141414;
 }
 
 ::backdrop {
@@ -85,11 +96,12 @@ body {
     grid-area: 1 / 1 / 2 / 2;
     font-family: 'Roboto-Medium';
     font-size: 50px;
-    color: var(--color-3);
+    color: rgb(222, 222, 222);
     padding-left: 40px;
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.282);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 1px 4px 0px rgba(255, 255, 255, 0.1);
 }
 
 .container > .main {
@@ -121,23 +133,45 @@ body {
     border-radius: 5px;
     padding: 10px;
     height: max(250px, fit-content);
-    background-color: var(--color-4);
-    box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, 0.5),
-    0px 0px 100px 0px rgba(0, 0, 0, 0.5);
-    /* box-shadow: 0px 0px 200px 0px rgba(0, 0, 0, 0.5); */
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(222, 222, 222);
+    /* box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, 0.5),
+    0px 0px 100px 0px rgba(0, 0, 0, 0.5); */
+    /* box-shadow: 0px 0px 1px 0px rgba(255, 255, 255, 0.5); */
+    position: relative;
+}
+
+.book-remove-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.book-remove-icon > span {
+    transform: scale(1);
+    transition: transform 0.25s, opacity 0.25s;
+    opacity: 0.7;
+}
+
+.book-remove-icon:hover > span {
+    transform: rotate(90deg) scale(1.2);
+    opacity: 1;
+    cursor: pointer;
 }
 
 .book.add {
     /* background-color: rgba(255, 255, 255, 0.081); */
     font-family: 'Roboto-Thin';
-    color: var(--color-3);
+    color: rgb(222, 222, 222);
     font-size: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     height: max(250px, fit-content);
-    /* min-height: 200px; */
+    /* min-height: 100px; */
+    padding: 20px;
+    border-radius: 5px;
 }
 
 .book.add:hover {

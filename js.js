@@ -60,12 +60,17 @@ function loadBooks() {
             bookItemReadToggleSpan.classList.add("slider", "round");
             bookItemReadToggleLabel.append(bookItemReadToggleSpan);
 
-            const bookItemRemoveButton = document.createElement("button");
-            bookItemRemoveButton.textContent = "Remove book";
-            bookItemRemoveButton.addEventListener("click", (event) => {
-                openRemoveDialog(event.target.parentNode.dataset.index);
-            })
+            const bookItemRemoveButton = document.createElement("div");
+            bookItemRemoveButton.classList.add("book-remove-icon");
             bookItem.append(bookItemRemoveButton);
+
+            const bookItemRemoveButtonIcon = document.createElement("span");
+            bookItemRemoveButtonIcon.addEventListener("click", (event) => {
+                openRemoveDialog(event.target.parentNode.parentNode.dataset.index);
+            })
+            bookItemRemoveButtonIcon.classList.add("material-symbols-outlined");
+            bookItemRemoveButtonIcon.textContent = "close";
+            bookItemRemoveButton.append(bookItemRemoveButtonIcon);
         
             bookList.append(bookItem);
 
