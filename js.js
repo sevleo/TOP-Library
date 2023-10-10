@@ -38,13 +38,17 @@ function loadBooks() {
             bookItemAuthor.textContent = `Author: ${book.author}`;
             bookItem.append(bookItemAuthor);
 
-            const bookItemHasRead = document.createElement("p");
-            bookItemHasRead.textContent = `Has been read: ${book.has_read}`;
-            bookItem.append(bookItemHasRead);
+            // const bookItemHasRead = document.createElement("p");
+            // bookItemHasRead.textContent = `Has been read: ${book.has_read}`;
+            // bookItem.append(bookItemHasRead);
 
             const bookItemReadToggleLabel = document.createElement("label");
             bookItemReadToggleLabel.classList.add('switch');
             bookItem.append(bookItemReadToggleLabel);
+
+            const bookItemReadToggleText = document.createElement("p");
+            bookItemReadToggleText.textContent = "Mark as read"
+            bookItemReadToggleLabel.append(bookItemReadToggleText);
 
             const bookItemReadToggleInput = document.createElement("input");
             bookItemReadToggleInput.setAttribute('type', 'checkbox');
