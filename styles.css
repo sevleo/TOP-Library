@@ -8,6 +8,7 @@
     'opsz' 24
   }
 
+
 /* Fonts */
 
 @font-face {
@@ -191,8 +192,12 @@ label.switch {
     align-items: center;
 }
 
-label.switch > p {
+.book > label.switch > p {
     font-size: 14px;
+    margin-right: 5px;
+}
+
+form label.switch > p {
     margin-right: 5px;
 }
 
@@ -248,7 +253,9 @@ input:checked + .slider:before {
   transform: translateX(22px);
 }
 
+
 /* Rounded sliders */
+
 .slider.round {
   border-radius: 20px;
 }
@@ -256,6 +263,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
 
 /* Modals */
 
@@ -283,13 +291,20 @@ dialog.add-book {
     outline: none;
 }
 
-dialog.add-book > form {
+dialog.add-book::-webkit-scrollbar {
+    display: none;
+}
+
+dialog.add-book > form,
+dialog.confirm-delete > form {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    height: 100%;
 }
 
-dialog.add-book > form > p {
+dialog.add-book > form > p,
+dialog.confirm-delete > form > p {
     font-size: 30px;
     align-self: center;
 }
@@ -301,6 +316,18 @@ dialog.add-book > form > div:nth-child(3) {
     flex-shrink: 1;
 }
 
+dialog.confirm-delete {
+    width: 30vw;
+    max-width: 300px;
+    min-width: 300px;
+
+    height: 30vh;
+    max-height: 180px;
+    min-height: 150px;
+    /* display: block; */
+    outline: none;
+}
+
 dialog input {
     padding: 10px;
     font-family: 'Roboto-Light';
@@ -309,4 +336,90 @@ dialog input {
 
 input::placeholder {
     color: rgba(137, 137, 137, 0.613);
+}
+
+dialog.add-book > form > :nth-child(5) {
+    margin-top: auto;
+}
+
+dialog.add-book > form button.submit {
+    width: 100%;
+    height: 30px;
+    background-color: #00A97F;
+    /* border: #00A97F 0.5px solid; */
+    border: none;
+    border-radius: 5px;
+    /* box-shadow: #000000 0px 1px 4px 0px; */
+    font-size: 20px;
+    font-family: 'Roboto-Light';
+}
+
+dialog.add-book > form > :nth-child(5) button.submit:hover {
+    background-color: #00a97f65;
+    /* border: 1px white solid; */
+}
+
+dialog.add-book > form > :nth-child(5) button.submit:active {
+    background-color: #004a3865;
+}
+
+dialog.confirm-delete > form button {
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: 'Roboto-Light';
+}
+
+dialog.confirm-delete > form button.confirm:hover {
+    background-color: #00a97f65;;
+}
+
+dialog.confirm-delete > form button.confirm:active {
+    background-color: #004a3865;;
+}
+
+dialog.confirm-delete > form button.confirm {
+    margin-top: auto;
+    background-color: #00A97F;
+}
+
+
+dialog.confirm-delete > form button.close:hover {
+    background-color: #cccccc83;;
+}
+
+dialog.confirm-delete > form button.close:active {
+    background-color: #cccccc1c;;
+}
+
+dialog.confirm-delete > form button.close {
+    /* margin-top: auto; */
+    background-color: #ccc;
+}
+
+dialog[open] {
+    -webkit-animation: show 0.2s ease normal;
+}
+dialog.hide {
+    -webkit-animation: hide 0.2s ease normal;
+}
+
+@-webkit-keyframes show{
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes hide{
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
+    }
 }

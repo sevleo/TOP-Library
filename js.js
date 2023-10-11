@@ -93,7 +93,7 @@ function addModalDialogEventListeners() {
 
     // Add book dialog
     const dialogAddBook = document.querySelector("dialog.add-book");
-    const dialogAddBookCloseButton = document.querySelector('dialog.add-book > form > div > button.close');
+    const dialogAddBookCloseButton = document.querySelector('dialog.add-book > form > div.book-remove-icon > span.material-symbols-outlined');
     const dialogAddBookForm = document.querySelector("dialog > form");
 
     // Add book button
@@ -106,14 +106,27 @@ function addModalDialogEventListeners() {
     dialogAddBookCloseButton.addEventListener("click", (event) => {
         event.preventDefault();
         dialogAddBookForm.reset();
-        dialogAddBook.close();
+
+        dialogAddBook.classList.add('hide');
+        dialogAddBook.addEventListener('webkitAnimationEnd', function () {
+            dialogAddBook.classList.remove('hide');
+            dialogAddBook.close();
+        dialogAddBook.removeEventListener('webkitAnimationEnd', arguments.callee, false);
+        },false);
     });
+    
     
     dialogAddBookForm.addEventListener("submit", (event) => {
         event.preventDefault();
         addBook(createBookObject());
         dialogAddBookForm.reset();
-        dialogAddBook.close();
+
+        dialogAddBook.classList.add('hide');
+        dialogAddBook.addEventListener('webkitAnimationEnd', function () {
+            dialogAddBook.classList.remove('hide');
+            dialogAddBook.close();
+        dialogAddBook.removeEventListener('webkitAnimationEnd', arguments.callee, false);
+        },false);
     });
 
     // Remove book dialog
@@ -125,12 +138,25 @@ function addModalDialogEventListeners() {
         event.preventDefault();
         removeBook(dialogRemoveBookConfirmButton.form.parentNode.dataset.bookId);
         removeBookNode(dialogRemoveBookConfirmButton.form.parentNode.dataset.bookId);
-        dialogRemoveBook.close();
+
+        dialogRemoveBook.classList.add('hide');
+        dialogRemoveBook.addEventListener('webkitAnimationEnd', function () {
+            dialogRemoveBook.classList.remove('hide');
+            dialogRemoveBook.close();
+            dialogRemoveBook.removeEventListener('webkitAnimationEnd', arguments.callee, false);
+        },false);
+
     })
 
     dialogRemoveBookCloseButton.addEventListener("click", (event) => {
         event.preventDefault();
-        dialogRemoveBook.close();
+        dialogRemoveBook.classList.add('hide');
+        dialogRemoveBook.addEventListener('webkitAnimationEnd', function () {
+            dialogRemoveBook.classList.remove('hide');
+            dialogRemoveBook.close();
+            dialogRemoveBook.removeEventListener('webkitAnimationEnd', arguments.callee, false);
+        },false);
+
     })
 }
 

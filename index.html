@@ -38,21 +38,32 @@
                 <input type="text" id="author" required placeholder="Marcus Aurelius">
             </div>
             <div>
-                <label for="read">Read</label>
-                <input type="checkbox" id="read">
+                <!-- <label for="read">Read</label> -->
+                <!-- <input type="checkbox" id="read"> -->
+                <label class="switch">
+                    <p>Mark as read</p>
+                    <input type="checkbox" id="read">
+                    <span class="slider round"></span>
+                </label>
             </div>
             <div>
-                <button autofocus type="submit" class="submit">Confirm</button>
-                <button class="close">Close</button>
+                <button autofocus type="submit" class="submit">Save</button>
+                <!-- <button class="close">Close</button> -->
+            </div>
+            <div class="book-remove-icon">
+                <span class="material-symbols-outlined">close</span>
             </div>
         </form>
     </dialog>
     <dialog class="confirm-delete" data-book-id="">
         <form>
             <p>Delete the book?</p>
-            <button class="confirm">Confirm</button>
-            <button class="close">Close</button>
+            <button class="confirm">Delete</button>
+            <button class="close">Cancel</button>
         </form>
+        <!-- <div class="book-remove-icon">
+            <span class="material-symbols-outlined">close</span>
+        </div> -->
     </dialog>
 </body>
 </html>
