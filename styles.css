@@ -286,7 +286,7 @@ dialog.add-book {
 
     height: 70vh;
     max-height: 400px;
-    min-height: 250px;
+    min-height: min(250px, 100vh);
     /* display: block; */
     outline: none;
 }
