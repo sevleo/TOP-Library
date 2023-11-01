@@ -3,17 +3,25 @@ const myLibrary = [];
 let bookCount = 0;
 
 // Execution
-createTestData();
-loadBooks();
-addModalDialogEventListeners();
+
 
 // Book constructor
-function Book(title, author, has_read, displayed, id) {
-    this.title = title;
-    this.author = author;
-    this.has_read = has_read;
-    this.displayed = displayed;
-    this.id = id;
+// function Book(title, author, has_read, displayed, id) {
+//     this.title = title;
+//     this.author = author;
+//     this.has_read = has_read;
+//     this.displayed = displayed;
+//     this.id = id;
+// }
+
+class Book {
+    constructor(title, author, has_read, displayed, id) {
+        this.title = title;
+        this.author = author;
+        this.has_read = has_read;
+        this.displayed = displayed;
+        this.id = id;
+    }
 }
 
 // Display updated books' library
@@ -221,3 +229,7 @@ function createTestData() {
     // myLibrary.push(book11);
     // myLibrary.push(book12);
 }
+
+createTestData();
+loadBooks();
+addModalDialogEventListeners();
